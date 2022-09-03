@@ -13,6 +13,14 @@ public class MovablePoint implements Movable {
         this.ySpeed = ySpeed;
     }
 
+    public int getXSpeed() {
+        return xSpeed;
+    }
+
+    public int getYSpeed() {
+        return ySpeed;
+    }
+
     @Override
     public void moveUp() {
         y += ySpeed;

@@ -7,6 +7,10 @@ public class MovableRectangle implements Movable {
     public MovableRectangle(int x1, int y1, int x2, int y2, int xSpeed, int ySpeed) {
         topLeft = new MovablePoint(x1, y1, xSpeed, ySpeed);
         bottomRight = new MovablePoint(x2, y2, xSpeed, ySpeed);
+
+        if (topLeft.getXSpeed() != bottomRight.getXSpeed() || topLeft.getYSpeed() != bottomRight.getYSpeed()) {
+            throw new RuntimeException("speeds of two MovablePoints in MovableRectangle are not equal");
+        }
     }
 
     @Override
@@ -31,5 +35,10 @@ public class MovableRectangle implements Movable {
     public void moveRight() {
         topLeft.moveRight();
         bottomRight.moveRight();
+    }
+
+    @Override
+    public String toString() {
+        return "MovableRectangle(topLeft: " + topLeft + ", bottomRight: " + bottomRight + ")";
     }
 }
