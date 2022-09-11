@@ -1,7 +1,5 @@
 package practice6;
 
-import java.util.Comparator;
-
 public class TestStudentGPASorting {
     public static void main(String[] args) {
         var students = new Student[]{
@@ -18,8 +16,6 @@ public class TestStudentGPASorting {
         System.out.println("sorted: ");
         printArray(students);
     }
-
-
 
     public static <T> void printArray(T[] array) {
         for (var item : array) {

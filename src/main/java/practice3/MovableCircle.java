@@ -5,8 +5,8 @@ public class MovableCircle implements Movable {
     private final MovablePoint center;
 
     public MovableCircle(int x, int y, int xSpeed, int ySpeed, int radius) {
-        center = new MovablePoint(x, y, xSpeed, ySpeed);
         this.radius = radius;
+        center = new MovablePoint(x, y, xSpeed, ySpeed);
     }
 
     @Override
