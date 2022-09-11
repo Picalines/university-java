@@ -5,8 +5,8 @@ import java.util.Stack;
 
 public class StackDrunkard extends Drunkard {
     @Override
-    protected DrunkardHand createHand(DrunkardCard[] cards) {
-        return new DrunkardHand() {
+    protected DrunkardHand createHand(DrunkardPlayer player, DrunkardCard[] cards) {
+        return new DrunkardHand(player) {
             private final Stack<DrunkardCard> cardStack = handArrayToStack(cards);
 
             @Override
@@ -16,7 +16,17 @@ public class StackDrunkard extends Drunkard {
 
             @Override
             public void putCartUnderneath(DrunkardCard card) {
-                cardStack.add(0, card);
+                // cardStack.add(0, card); <-- legal?
+
+                var tempStack = new Stack<DrunkardCard>();
+                while (!cardStack.isEmpty()) {
+                    tempStack.push(cardStack.pop());
+                }
+
+                cardStack.push(card);
+                while (!tempStack.isEmpty()) {
+                    cardStack.push(tempStack.pop());
+                }
             }
 
             @Override

@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class DequeDrunkard extends Drunkard {
     @Override
-    protected DrunkardHand createHand(DrunkardCard[] cards) {
-        return new DrunkardHand() {
+    protected DrunkardHand createHand(DrunkardPlayer player, DrunkardCard[] cards) {
+        return new DrunkardHand(player) {
             private final Deque<DrunkardCard> cardDeque = handArrayToDeque(cards);
 
             @Override

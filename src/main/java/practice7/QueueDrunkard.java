@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class QueueDrunkard extends Drunkard {
     @Override
-    protected DrunkardHand createHand(DrunkardCard[] cards) {
-        return new DrunkardHand() {
+    protected DrunkardHand createHand(DrunkardPlayer player, DrunkardCard[] cards) {
+        return new DrunkardHand(player) {
             private final Queue<DrunkardCard> cardQueue = handArrayToQueue(cards);
 
             @Override
