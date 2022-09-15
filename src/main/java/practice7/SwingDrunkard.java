@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.function.Function;
 
 public class SwingDrunkard extends JFrame {
-    public SwingDrunkard() {
+    private SwingDrunkard() {
         super("Drunkard");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(600, 400);

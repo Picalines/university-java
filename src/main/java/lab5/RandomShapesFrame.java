@@ -13,7 +13,7 @@ public class RandomShapesFrame extends JFrame {
         Shape createRandomShape();
     }
 
-    public RandomShapesFrame() {
+    private RandomShapesFrame() {
         super("random shapes");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(500, 500);

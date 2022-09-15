@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.Optional;
 
 public class GameTable extends JFrame {
-    public GameTable() {
+    private GameTable() {
         // Window settings
         super("Milan X Madrid");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
