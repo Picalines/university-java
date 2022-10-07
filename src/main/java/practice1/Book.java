@@ -1,46 +1,46 @@
 package practice1;
 
 public class Book {
-    public String _title;
-    public String _author;
-    public String[] _pages;
+    private String title;
+    private String author;
+    private final String[] pages;
 
     public Book(String title, String author, int numberOfPages) {
         setTitle(title);
         setAuthor(author);
 
-        _pages = new String[numberOfPages];
+        pages = new String[numberOfPages];
     }
 
     public String getTitle() {
-        return _title;
+        return title;
     }
 
     public void setTitle(String title) {
-        _title = title;
+        this.title = title;
     }
 
     public String getAuthor() {
-        return _author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        _author = author;
+        this.author = author;
     }
 
     public void setPage(int pageIndex, String pageContent) {
-        _pages[pageIndex] = pageContent;
+        pages[pageIndex] = pageContent;
     }
 
     public String getPage(int pageIndex) {
-        return _pages[pageIndex];
+        return pages[pageIndex];
     }
 
     public int getPageCount() {
-        return _pages.length;
+        return pages.length;
     }
 
     public String toString() {
-        return "Book { title: '" + _title + "', author: '" + _author + "', " + _pages.length + " pages }";
+        return "Book { title: '" + title + "', author: '" + author + "', " + pages.length + " pages }";
     }
 }

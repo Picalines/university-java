@@ -1,8 +1,8 @@
 package practice1;
 
 public class Ball {
-    public String _color;
-    public double _radius;
+    private String color;
+    private double radius;
 
     public Ball(String color, double radius) {
         setColor(color);
@@ -10,22 +10,22 @@ public class Ball {
     }
 
     public String getColor() {
-        return _color;
+        return color;
     }
 
     public void setColor(String color) {
-        _color = color;
+        this.color = color;
     }
 
     public double getRadius() {
-        return _radius;
+        return radius;
     }
 
     public void setRadius(double radius) {
-        _radius = radius;
+        this.radius = radius;
     }
 
     public String toString() {
-        return "Ball { color: " + _color + ", radius: " + _radius + " }";
+        return "Ball { color: " + color + ", radius: " + radius + " }";
     }
 }
