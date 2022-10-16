@@ -41,10 +41,10 @@ public class AnimationViewer {
             @Override
             public void paintComponent(Graphics graphics) {
                 super.paintComponent(graphics);
-                animFrame += 1;
-                if (animFrame >= images.length) animFrame = 0;
-                frame.setSize(images[animFrame].getWidth(), images[animFrame].getHeight());
-                graphics.drawImage(images[animFrame], 0, 0, this);
+                animFrame = (animFrame + 1) % images.length;
+                var image = images[animFrame];
+                frame.setSize(image.getWidth(), image.getHeight());
+                graphics.drawImage(image, 0, 0, this);
             }
         });
 
