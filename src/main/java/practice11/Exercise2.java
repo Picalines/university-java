@@ -8,23 +8,18 @@ public class Exercise2 {
         Calendar calendar = Calendar.getInstance();
         var scanner = new Scanner(System.in);
 
-        var currentTime = System.currentTimeMillis();
-        calendar.setTimeInMillis(currentTime);
+        var currentTime = calendar.getTime();
 
         System.out.println("Введите дату (<день месяца> <месяц> <год>):");
         calendar.set(Calendar.DAY_OF_MONTH, scanner.nextInt());
-        calendar.set(Calendar.MONTH, scanner.nextInt());
+        calendar.set(Calendar.MONTH, scanner.nextInt() - 1);
         calendar.set(Calendar.YEAR, scanner.nextInt());
-        var userTime = calendar.getTimeInMillis();
+        var userTime = calendar.getTime();
 
-        if (userTime > currentTime) {
-            System.out.println("Эта дата позже текущей");
-        }
-        else if (userTime < currentTime) {
-            System.out.println("Эта дата раньше текущей");
-        }
-        else {
-            System.out.println("Это та же дата");
-        }
+        System.out.println(switch (userTime.compareTo(currentTime)) {
+            case 1 -> "Эта дата позже текущей";
+            case -1 -> "Эта дата раньше текущей";
+            default -> "Это та же дата";
+        });
     }
 }
