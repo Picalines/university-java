@@ -1,10 +1,23 @@
 package practice19;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.function.Predicate;
 
 record Student(String name, double GPA) {}
+
+class StudentNotFoundException extends Exception {
+    public StudentNotFoundException(String studentName) {
+        super("student with name '" + studentName + "' was not found");
+    }
+}
 
 public class LabClassUI extends JFrame {
     private LabClassUI() {
@@ -15,34 +28,68 @@ public class LabClassUI extends JFrame {
 
         setLayout(new BorderLayout());
 
+        var northPanel = new JPanel();
+        northPanel.setLayout(new GridLayout(2, 1));
+        add(northPanel, BorderLayout.NORTH);
+
         var searchField = new JTextField();
-        add(searchField, BorderLayout.NORTH);
+        northPanel.add(searchField);
 
-        var listModel = new DefaultListModel<Student>();
-        listModel.addAll(generateStudentsArray(100));
+        var messageLabel = new JLabel();
+        northPanel.add(messageLabel);
 
-        var list = new JList<>(listModel);
-        add(new JScrollPane(list), BorderLayout.CENTER);
+        var studentsArray = generateStudentsArray(100);
+        InsertionSort.sort(studentsArray, Comparator.comparingDouble(Student::GPA));
+
+        var studentsJList = new JList<>();
+        studentsJList.setListData(studentsArray);
+
+        searchField.addActionListener(l -> {
+            messageLabel.setText("");
+            studentsJList.setListData(new Student[]{});
+
+            try {
+                var studentNameToSearch = searchField.getText();
+
+                var matchingStudents = studentNameToSearch.length() == 0
+                    ? studentsArray
+                    : Arrays.stream(studentsArray)
+                    .filter(student -> student.name().contains(studentNameToSearch))
+                    .toArray();
+
+                if (matchingStudents.length == 0) {
+                    throw new StudentNotFoundException(studentNameToSearch);
+                }
+
+                studentsJList.setListData(matchingStudents);
+            } catch (Exception exception) {
+                messageLabel.setText(exception.getClass().getName() + ": " + exception.getMessage());
+            }
+        });
+
+        add(new JScrollPane(studentsJList), BorderLayout.CENTER);
 
         setVisible(true);
     }
 
-    private static ArrayList<Student> generateStudentsArray(int numberOfStudents) {
-        var studentFirstNames = new String[] {
+    private static Student[] generateStudentsArray(int numberOfStudents) {
+        var studentFirstNames = new String[]{
             "Oleg", "Max", "Petr", "Dmitri", "Olga", "Masha", "Kate",
         };
 
-        var studentLastNames = new String[] {
+        var studentLastNames = new String[]{
             "Johnson", "Smith", "Jones", "Williams", "Brown",
         };
 
-        var list = new ArrayList<Student>();
+        var array = new Student[numberOfStudents];
+
         for (int i = 0; i < numberOfStudents; i++) {
-            var randomFirstName = studentFirstNames[(int)Math.floor(Math.random() * studentFirstNames.length)];
-            var randomLastName = studentLastNames[(int)Math.floor(Math.random() * studentLastNames.length)];
-            list.add(new Student(randomFirstName + " " + randomLastName, Math.random() * 5));
+            var randomFirstName = studentFirstNames[(int) Math.floor(Math.random() * studentFirstNames.length)];
+            var randomLastName = studentLastNames[(int) Math.floor(Math.random() * studentLastNames.length)];
+            array[i] = new Student(randomFirstName + " " + randomLastName, Math.random() * 5);
         }
-        return list;
+
+        return array;
     }
 
     public static void main(String[] args) {
