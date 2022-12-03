@@ -85,7 +85,7 @@ public class Main {
                 : new SubtractNode(left, right)
         );
 
-        expression.setValue(addition.atEnd());
+        expression.setValue(addition);
 
         return expression.getValue();
     }

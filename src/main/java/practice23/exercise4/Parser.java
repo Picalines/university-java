@@ -88,6 +88,8 @@ public abstract class Parser<T> {
             public ParseResult<T> parse(TokenReader tokenReader) {
                 var result = parser.parse(tokenReader);
 
+                tokenReader.advance();
+
                 if (result.isSuccess() && tokenReader.currentToken().isPresent()) {
                     return ParseResult.error(
                         "unexpected token " + tokenReader.currentToken().get().type() + " (expected end of input)",
