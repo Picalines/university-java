@@ -137,6 +137,8 @@ public class TextEditorApp extends BaseApp {
 
     public TextEditorApp() {
         super(new CreateTextDocument());
+        ((CreateTextDocument)documentCreator).setDialogParentFrame(this);
+
         setTitle("Text editor");
         setSize(400, 300);
         setResizable(true);
@@ -144,9 +146,7 @@ public class TextEditorApp extends BaseApp {
         textArea = new JTextArea();
         add(textArea);
 
-        textArea.getDocument().addDocumentListener(new ChangedDocumentListener(e -> getCurrentDocument().ifPresent(doc -> {
-            ((TextDocument) doc).setText(textArea.getText());
-        })));
+        textArea.getDocument().addDocumentListener(new ChangedDocumentListener(e -> getCurrentDocument().ifPresent(doc -> ((TextDocument) doc).setText(textArea.getText()))));
 
         setVisible(true);
     }
