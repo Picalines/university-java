@@ -35,8 +35,16 @@ public abstract class BaseApp extends JFrame {
 
         quitFileMenuItem.addActionListener(l -> setVisible(false));
 
-        newFileMenuItem.addActionListener(l -> document = documentCreator.createNew());
-        openFileMenuItem.addActionListener(l -> document = documentCreator.createOpen());
+        newFileMenuItem.addActionListener(l -> {
+            document = documentCreator.createNew();
+            onDocumentCreated();
+        });
+
+        openFileMenuItem.addActionListener(l -> {
+            document = documentCreator.createOpen();
+            onDocumentCreated();
+        });
+
         saveFileMenuItem.addActionListener(l -> {
             if (document == null) {
                 return;
@@ -63,4 +71,6 @@ public abstract class BaseApp extends JFrame {
     public Optional<IDocument> getCurrentDocument() {
         return Optional.ofNullable(document);
     }
+
+    protected void onDocumentCreated() {}
 }
