@@ -1,8 +1,8 @@
 package practice24.exercise3;
 
-import java.io.Writer;
+import java.io.StringWriter;
 
 public interface IDocument {
     String getPath();
-    void save(Writer writer);
+    void save(StringWriter writer);
 }
