@@ -2,14 +2,14 @@ package practice29;
 
 import java.util.ArrayList;
 
-public class InternetOrder implements Order {
+public class RestaurantOrder implements Order {
     private final CyclingDoubleList<Item> items;
 
-    public InternetOrder() {
+    public RestaurantOrder() {
         items = new CyclingDoubleList<>();
     }
 
-    public InternetOrder(Item[] items) {
+    public RestaurantOrder(Item[] items) {
         this.items = new CyclingDoubleList<>(items);
     }
 
