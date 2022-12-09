@@ -146,7 +146,11 @@ public class TextEditorApp extends BaseApp {
         textArea = new JTextArea();
         add(textArea);
 
-        textArea.getDocument().addDocumentListener(new ChangedDocumentListener(e -> getCurrentDocument().ifPresent(doc -> ((TextDocument) doc).setText(textArea.getText()))));
+        var changedDocumentListener = new ChangedDocumentListener(e -> {
+            getCurrentDocument().ifPresent(doc -> ((TextDocument) doc).setText(textArea.getText()));
+        });
+
+        textArea.getDocument().addDocumentListener(changedDocumentListener);
 
         setVisible(true);
     }
