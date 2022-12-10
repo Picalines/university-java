@@ -9,7 +9,7 @@ public class OrderUI extends JFrame {
     private static final String currentOrderTextHeader = "Current order: ";
     private final Customer customer = new Customer(
         "Petr", "Kostenko", 19,
-        new Address("Moscow", 119454, "Prospect Vernadskogo", 78, 1)
+        Address.EMPTY_ADDRESS
     );
 
     private final TableOrdersManager tableOrderManager = new TableOrdersManager(32);

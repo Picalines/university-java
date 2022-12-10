@@ -3,6 +3,18 @@ package practice30;
 import java.util.Iterator;
 
 public class InternetOrdersManager implements OrdersManager {
+    private static class QueueNode {
+        public QueueNode next;
+        public QueueNode prev;
+        public Order value;
+
+        public QueueNode(QueueNode prev, Order value, QueueNode next) {
+            this.prev = prev;
+            this.value = value;
+            this.next = next;
+        }
+    }
+
     private QueueNode head = null;
     private QueueNode tail = null;
     int size = 0;
@@ -62,10 +74,10 @@ public class InternetOrdersManager implements OrdersManager {
     public boolean add(Order order, Customer customer) {
         size++;
         if (head == null) {
-            head = new QueueNode(order, customer, null);
+            head = new QueueNode(null, order, null);
             tail = head;
         } else {
-            tail.next = new QueueNode(order, customer, tail);
+            tail.next = new QueueNode(tail, order, null);
             tail = tail.next;
         }
         return true;
