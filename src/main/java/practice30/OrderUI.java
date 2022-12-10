@@ -128,6 +128,8 @@ public class OrderUI extends JFrame {
         resultOrdersPanel.setLayout(new BorderLayout());
 
         resultOrdersPanel.add(allOrdersText, BorderLayout.CENTER);
+
+        setVisible(true);
     }
 
     private JComboBox<MenuItem> createMenuItemComboBox(MenuItem... menuItems) {
@@ -158,6 +160,6 @@ public class OrderUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        new OrderUI().setVisible(true);
+        new OrderUI();
     }
 }
