@@ -1,4 +1,8 @@
-package practice6_new;
+package practice6_new.exercise10;
+
+import practice6_new.exercise3.Nameable;
+import practice6_new.exercise4.Priceable;
+import practice6_new.exercise6_9.Printable;
 
 enum Manufacturer {
     Intel,

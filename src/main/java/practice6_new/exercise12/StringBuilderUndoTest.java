@@ -1,4 +1,4 @@
-package practice6_new;
+package practice6_new.exercise12;
 
 public class StringBuilderUndoTest {
     public static void main(String[] args) {

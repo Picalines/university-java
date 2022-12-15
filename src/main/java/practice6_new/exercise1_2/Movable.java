@@ -1,4 +1,4 @@
-package practice6_new;
+package practice6_new.exercise1_2;
 
 public interface Movable {
     void moveUp();

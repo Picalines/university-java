@@ -1,4 +1,7 @@
-package practice6_new;
+package practice6_new.exercise3;
+
+import practice6_new.exercise6_9.Cat;
+import practice6_new.exercise6_9.Dog;
 
 public class NameableTest {
     public static void main(String[] args) {

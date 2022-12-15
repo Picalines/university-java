@@ -1,4 +1,7 @@
-package practice6_new;
+package practice6_new.exercise6_9;
+
+import practice6_new.exercise3.Nameable;
+import practice6_new.exercise4.Priceable;
 
 public class Book implements Priceable, Nameable, Printable {
     private final String title;

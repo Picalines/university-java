@@ -1,4 +1,8 @@
-package practice6_new;
+package practice6_new.exercise10;
+
+import practice6_new.exercise6_9.Book;
+import practice6_new.exercise6_9.Cat;
+import practice6_new.exercise6_9.Dog;
 
 public class ShopTest {
     public static void main(String[] args) {
