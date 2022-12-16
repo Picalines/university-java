@@ -12,12 +12,12 @@ public class Exercise1 {
 
         System.out.println("task 3:");
         var dbl = Double.valueOf(789.012);
-        System.out.println(dbl.doubleValue());
-        System.out.println(dbl.floatValue());
-        System.out.println(dbl.longValue());
-        System.out.println(dbl.intValue());
-        System.out.println(dbl.shortValue());
-        System.out.println(dbl.byteValue());
+        System.out.println("doubleValue: " + dbl.doubleValue());
+        System.out.println("floatValue: " + dbl.floatValue());
+        System.out.println("longValue: " + dbl.longValue());
+        System.out.println("intValue: " + dbl.intValue());
+        System.out.println("shortValue: " + dbl.shortValue());
+        System.out.println("byteValue: " + dbl.byteValue());
 
         System.out.println("task 4:");
         System.out.println(dbl);

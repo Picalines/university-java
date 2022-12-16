@@ -25,7 +25,9 @@ class DollarToRublesConverter extends CurrencyConverter {
     }
 
     public static void main(String[] args) {
-        var converter = new DollarToRublesConverter();
-        System.out.println(converter.convert(123));
+        CurrencyConverter converter = new DollarToRublesConverter();
+        var dollars = 123.0;
+        System.out.println("Dollars: " + dollars);
+        System.out.println("Rubles: " + converter.convert(dollars));
     }
 }
