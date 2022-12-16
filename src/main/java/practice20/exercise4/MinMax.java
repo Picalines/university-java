@@ -24,7 +24,8 @@ public class MinMax<T extends Comparable<T>> {
 
     public static void main(String[] args) {
         var minMax = new MinMax<>(new Integer[] { 4, 10, -1 });
-        System.out.println(minMax.min());
-        System.out.println(minMax.max());
+        System.out.println(Arrays.toString(minMax.array) + ":");
+        System.out.println("min: " + minMax.min());
+        System.out.println("max: " + minMax.max());
     }
 }
