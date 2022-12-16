@@ -24,11 +24,12 @@ public interface ExpressionNode {
             new ConstNode(1)
         );
 
+        System.out.println("f(x) = x^2 - 2x + 1");
         System.out.print("Введите x: ");
         var userX = Integer.parseInt(new Scanner(System.in).nextLine());
 
         context.defineVariable("x", userX);
 
-        System.out.println("x^2 - 2x + 1 = " + expression.evaluate(context));
+        System.out.println("f(" + userX + ") = " + expression.evaluate(context));
     }
 }
