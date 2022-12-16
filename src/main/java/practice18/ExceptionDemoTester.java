@@ -298,20 +298,20 @@ public class ExceptionDemoTester {
     }
 
     private static void testDemoWithInput(ExceptionDemo demo, String input) {
-        System.out.println("* Running " + demo.getClass().getName());
+        System.out.println("--- Running " + demo.getClass().getName() + " ---");
 
         if (input != null) {
             var inputStream = new ByteArrayInputStream((input + "\n").getBytes());
             System.setIn(inputStream);
-            System.out.println("* With input: " + input);
+            System.out.println("--- With input: \"" + input.replace("\n", "\\n") + "\" ---");
         }
 
         try {
             demo.exceptionDemo();
 
-            System.out.println("! No exception was caught by " + ExceptionDemoTester.class.getName());
+            System.out.println("--! No exception was caught by " + ExceptionDemoTester.class.getName());
         } catch (Throwable exception) {
-            System.out.println("! " + ExceptionDemoTester.class.getName() + " caught an exception:");
+            System.out.println("--! " + ExceptionDemoTester.class.getName() + " caught an exception:");
             System.out.println(exception);
             var stackTrace = exception.getStackTrace();
             System.out.println(" at " + stackTrace[stackTrace.length - 1]);
