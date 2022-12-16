@@ -52,7 +52,7 @@ public class Main {
     private static void printMap(Map<?, ?> map) {
         System.out.println("{");
         for (var entry : map.entrySet()) {
-            System.out.println(entry.getKey() + " => " + entry.getValue());
+            System.out.println("  " + entry.getKey() + " => " + entry.getValue());
         }
         System.out.println("}");
     }
