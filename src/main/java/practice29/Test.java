@@ -5,29 +5,34 @@ import java.util.Arrays;
 public class Test {
     public static void main(String[] args) {
         var restaurantOrder = new RestaurantOrder();
-        restaurantOrder.add(new Dish(600, "Tasty Italian dish", "Lasagna"));
-        restaurantOrder.add(new Drink(190, "Orange", "Juice"));
+        restaurantOrder.add(new Dish(500, "Meatballs", "Tasty meatballs"));
+        restaurantOrder.add(new Dish(400, "Pasta", "Tasty pasta"));
 
+        System.out.println("Restaurant order:");
         System.out.println(Arrays.toString(restaurantOrder.itemNames()));
-        System.out.println("\n" + "Restaurant orders: ");
         var orderManager = new OrderManager();
-        try{
+        try {
             orderManager.add(restaurantOrder, 1);
         } catch (OrderAlreadyException e) {
             System.out.println(e.getMessage());
         }
 
-        orderManager = new OrderManager();
-        var internetOrder = new InternetOrder();
-        internetOrder.add(new Dish(600, "Tasty Italian dish", "Lasagna"));
-        internetOrder.add(new Drink(190, "Orange", "Juice"));
-        String address = "Moscow ul.Mira 41, 60";
+        System.out.println("successfully added");
 
+        var internetOrder = new InternetOrder();
+        internetOrder.add(new Dish(300, "Seafood", "Tasty seafood"));
+        internetOrder.add(new Drink(400, "Water", "Not alcohol drink"));
+
+        System.out.println("Internet order:");
+        System.out.println(Arrays.toString(internetOrder.itemNames()));
+
+        orderManager = new OrderManager();
         try {
-            orderManager.add(internetOrder, address);
+            orderManager.add(internetOrder, "undefined");
         } catch (OrderAlreadyException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(Arrays.toString(internetOrder.itemNames()));
+
+        System.out.println("successfully added");
     }
 }
